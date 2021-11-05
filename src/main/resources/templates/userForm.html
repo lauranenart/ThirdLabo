@@ -16,15 +16,24 @@
 
     <label>Phone number:</label><br>
     <input type="text" th:field="*{phoneNumber}" required><br>
+    <div th:each="error : ${phoneNumberErrors}">
+        <label>[[${error}]]</label>
+    </div>
 
     <label>Email address:</label><br>
     <input type="text" th:field="*{emailAddress}" required><br>
+    <div th:each="error : ${emailErrors}">
+        <label>[[${error}]]</label>
+    </div>
 
     <label>Address:</label><br>
     <input type="text" th:field="*{address}" required><br>
 
     <label>Password:</label><br>
     <input type="password" th:field="*{password}" required><br>
+    <div th:each="error : ${passwordErrors}">
+        <label>[[${error}]]</label>
+    </div>
 
     <button type="submit">Save</button>
     <button type="button" onclick="goBack()">Cancel</button>

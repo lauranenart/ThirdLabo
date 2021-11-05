@@ -30,9 +30,18 @@ public class MainController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(UserModel user){
-        UserModel savedUser = userService.save(user);
-        return "redirect:/";
+    public String saveUser(UserModel user, Model model){
+        if(userService.validateUser(user)){
+            userService.save(user);
+            return "redirect:/";
+        }
+        else{
+            model.addAttribute("user", user);
+            model.addAttribute("emailErrors", userService.validateEmail(user.getEmailAddress()));
+            model.addAttribute("phoneNumberErrors", userService.validatePhoneNumber(user.getPhoneNumber()));
+            model.addAttribute("passwordErrors", userService.validatePassword(user.getPassword()));
+            return "userForm";
+        }
     }
 
     @GetMapping("/editUser/{id}")
