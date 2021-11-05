@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User insertion form</title>
+</head>
+<body>
+<h1>User insertion form</h1>
+<div>
+    <a th:href="@{/newUser}">Insert new user</a>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>PhoneNumber</th>
+                <th>EmailAddress</th>
+                <th>Address</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="user : ${users}">
+            <tr>
+                <td>[[${user.id}]]</td>
+                <td>[[${user.name}]]</td>
+                <td>[[${user.surname}]]</td>
+                <td>[[${user.phoneNumber}]]</td>
+                <td>[[${user.emailAddress}]]</td>
+                <td>[[${user.address}]]</td>
+                <td>
+                    <a th:href="@{'/editUser/' + ${user.id}}">Edit</a>
+                    <a th:href="@{'/deleteUser/' + ${user.id}}">Delete</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+</table>
+</div>
+</body>
+</html>

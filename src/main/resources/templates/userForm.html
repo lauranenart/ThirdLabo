@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User form</title>
+</head>
+<body>
+<h1>[[${pageHeader}]]</h1>
+<form th:action="@{/saveUser}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label>Name:</label><br>
+    <input type="text" th:field="*{name}" required><br>
+
+    <label>Surname:</label><br>
+    <input type="text" th:field="*{surname}" required><br>
+
+    <label>Phone number:</label><br>
+    <input type="text" th:field="*{phoneNumber}" required><br>
+
+    <label>Email address:</label><br>
+    <input type="text" th:field="*{emailAddress}" required><br>
+
+    <label>Address:</label><br>
+    <input type="text" th:field="*{address}" required><br>
+
+    <label>Password:</label><br>
+    <input type="password" th:field="*{password}" required><br>
+
+    <button type="submit">Save</button>
+    <button type="button" onclick="goBack()">Cancel</button>
+</form>
+<script>
+    function goBack() {
+        window.location = "[[@{/}]]";
+    }
+</script>
+</body>
+</html>
