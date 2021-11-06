@@ -40,6 +40,7 @@ public class MainController {
             model.addAttribute("emailErrors", userService.validateEmail(user.getEmailAddress()));
             model.addAttribute("phoneNumberErrors", userService.validatePhoneNumber(user.getPhoneNumber()));
             model.addAttribute("passwordErrors", userService.validatePassword(user.getPassword()));
+            model.addAttribute("pageHeader", "Reenter credentials");
             return "userForm";
         }
     }
