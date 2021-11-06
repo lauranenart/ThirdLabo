@@ -21,6 +21,18 @@ public class UserModel {
     @Column(nullable = false)
     private String password;
 
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

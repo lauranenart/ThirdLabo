@@ -52,4 +52,17 @@ public class MainController {
         return "userForm";
     }
 
+    @GetMapping("/getUser")
+    public String openSearchForm(Model model){
+        model.addAttribute("user", new UserModel());
+        return "searchForm";
+    }
+
+    @PostMapping("/findUser")
+    public String findUserById(UserModel user, Model model){
+        UserModel foundUser = userService.getUser(user.getId());
+        model.addAttribute("user", foundUser);
+        model.addAttribute("foundUser", foundUser.toString());
+        return "searchForm";
+    }
 }
