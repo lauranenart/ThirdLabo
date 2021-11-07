@@ -29,14 +29,21 @@ public class UserService {
     }
 
     public UserModel getUser(Integer id) {
-        return userRepo.findById(id).get();
+        UserModel foundUser = userRepo.findById(id).orElse(null);
+        if(foundUser == null)
+            return new UserModel();
+        return foundUser;
+    }
+
+    public void delete(Integer id) {
+        userRepo.deleteById(id);
     }
 
     public boolean validateUser(UserModel user){
         List<String> emailErrors = validateEmail(user.getEmailAddress());
         List<String> phoneNumberErrors = validatePhoneNumber(user.getPhoneNumber());
         List<String> passwordErrors = validatePassword(user.getPassword());
-        return emailErrors.equals(null) && phoneNumberErrors.equals(null) && passwordErrors.equals(null);
+        return (emailErrors.size() == 0) && (phoneNumberErrors.size() == 0) && (passwordErrors.size() == 0);
     }
 
     public List<String> validateEmail(String email){
@@ -61,9 +68,9 @@ public class UserService {
     public List<String> validatePassword(String password){
         ArrayList<String> passwordErrors = new ArrayList<>();
         if(!passwordChecker.hasSpecialChar(password))
-            passwordErrors.add("At least one special character is a must");
+            passwordErrors.add("At least one special character is required");
         if(!passwordChecker.hasUpperCase(password))
-            passwordErrors.add("At least one uppercase is a must");
+            passwordErrors.add("At least one uppercase is required");
         if(!passwordChecker.isNotShorter(password, 8))
             passwordErrors.add("Password must be at least 8 characters long");
         return passwordErrors;

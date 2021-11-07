@@ -64,7 +64,13 @@ public class MainController {
     public String findUserById(UserModel user, Model model){
         UserModel foundUser = userService.getUser(user.getId());
         model.addAttribute("user", foundUser);
-        model.addAttribute("foundUser", foundUser.toString());
+        model.addAttribute("foundUser", foundUser);
         return "searchForm";
+    }
+
+    @GetMapping("/deleteUser/{id}")
+    public String deleteAction(@PathVariable("id") Integer id){
+        userService.delete(id);
+        return "redirect:/";
     }
 }
