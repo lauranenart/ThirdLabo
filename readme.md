@@ -1,0 +1,1 @@
+Pasileidus ThirdLaboApplication, svetainėje susivesti adresą localhost:8080
