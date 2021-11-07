@@ -1,4 +1,4 @@
-package com.project.thirdlabo;
+package com.project.thirdlabo.validators;
 
 public class EmailValidator {
 

@@ -1,5 +1,10 @@
-package com.project.thirdlabo;
+package com.project.thirdlabo.services;
 
+import com.project.thirdlabo.UserRepository;
+import com.project.thirdlabo.models.UserModel;
+import com.project.thirdlabo.validators.EmailValidator;
+import com.project.thirdlabo.validators.PasswordChecker;
+import com.project.thirdlabo.validators.PhoneValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +17,7 @@ public class UserService {
     private UserRepository userRepo;
 
     private EmailValidator emailValidator = new EmailValidator();
-    private  PasswordChecker passwordChecker = new PasswordChecker();
+    private PasswordChecker passwordChecker = new PasswordChecker();
     private PhoneValidator phoneValidator = new PhoneValidator();
 
     public List<UserModel> getAllUsers(){
@@ -31,7 +36,7 @@ public class UserService {
         List<String> emailErrors = validateEmail(user.getEmailAddress());
         List<String> phoneNumberErrors = validatePhoneNumber(user.getPhoneNumber());
         List<String> passwordErrors = validatePassword(user.getPassword());
-        return emailErrors.equals(null) && phoneNumberErrors.equals(true) && passwordErrors.equals(null);
+        return emailErrors.equals(null) && phoneNumberErrors.equals(null) && passwordErrors.equals(null);
     }
 
     public List<String> validateEmail(String email){

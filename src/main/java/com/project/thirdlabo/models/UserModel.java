@@ -1,4 +1,4 @@
-package com.project.thirdlabo;
+package com.project.thirdlabo.models;
 
 import javax.persistence.*;
 

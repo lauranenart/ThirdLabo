@@ -1,5 +1,7 @@
-package com.project.thirdlabo;
+package com.project.thirdlabo.controllers;
 
+import com.project.thirdlabo.models.UserModel;
+import com.project.thirdlabo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
